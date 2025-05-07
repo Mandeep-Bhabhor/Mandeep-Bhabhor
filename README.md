@@ -39,5 +39,19 @@ Advanced video streaming platform
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Mandeep-Bhabhor&layout=compact&theme=radical)
 
 ## 📫 Connect With Me
-- 💼 [LinkedIn](https://www.linkedin.com/in/mandeep-bhabhor-305a62334/)
-- 🌐 [GitHub](https://github.com/Mandeep-Bhabhor)
+
+<div align="left">
+  <a href="https://www.linkedin.com/in/mandeep-bhabhor-305a62334/">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
+  </a>
+  <a href="https://github.com/Mandeep-Bhabhor">
+    <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
+  </a>
+  <a href="mailto:mdpbhabhor@gmail.com">
+    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
+  </a>
+</div>
+
+- 📧 Email: mdpbhabhor@gmail.com
+- 💼 LinkedIn: [mandeep-bhabhor](https://www.linkedin.com/in/mandeep-bhabhor-305a62334/)
+- 🌐 GitHub: [Mandeep-Bhabhor](https://github.com/Mandeep-Bhabhor)
