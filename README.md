@@ -2,9 +2,16 @@
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mandeep-bhabhor-305a62334/)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Mandeep-Bhabhor)
+  <a href="mailto:mdpbhabhor@gmail.com">
+    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
+  </a>
+
 
 ## 🚀 About Me
 > Final year B.Tech student in Computer and IT at AAU, Anand. Laravel developer passionate about building web applications with a focus on efficient and scalable solutions.
+
+## 👤 My Portfolio
+[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=firefox&logoColor=white)](https://mandeep-bhabhor.github.io/Mandeep-Bhabhor/)
 
 ## 💻 Tech Stack
 
@@ -52,6 +59,4 @@ Advanced video streaming platform
   </a>
 </div>
 
-- 📧 Email: mdpbhabhor@gmail.com
-- 💼 LinkedIn: [mandeep-bhabhor](https://www.linkedin.com/in/mandeep-bhabhor-305a62334/)
-- 🌐 GitHub: [Mandeep-Bhabhor](https://github.com/Mandeep-Bhabhor)
+
