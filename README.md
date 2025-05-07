@@ -59,4 +59,5 @@ Advanced video streaming platform
   </a>
 </div>
 
+[![Visitor Count](https://visitor-badge.laobi.icu/badge?page_id=Mandeep-Bhabhor.Mandeep-Bhabhor)](https://github.com/Mandeep-Bhabhor)
 
