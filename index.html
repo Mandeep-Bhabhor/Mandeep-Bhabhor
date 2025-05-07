@@ -3,454 +3,616 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Mandeep Bhabhor - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
+        :root {
+            --dark-bg: #0f172a;
+            --darker-bg: #0a1022;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --accent: #10b981; /* Emerald accent color */
+            --accent-hover: #059669;
+            --card-bg: #1e293b;
+            --border: #334155;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
+
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
             line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
         }
-        header {
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 2rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+
+        a {
+            text-decoration: none;
+            color: var(--accent);
+            transition: color 0.3s ease;
         }
+
+        a:hover {
+            color: var(--accent-hover);
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 20px;
         }
-        .header-content {
+
+        /* Header */
+        header {
+            background-color: var(--darker-bg);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+
         .logo {
-            font-size: 1.5rem;
+            font-size: 24px;
             font-weight: 700;
-            color: #000;
-            text-decoration: none;
+            color: var(--accent);
         }
-        nav ul {
+
+        .nav-links {
             display: flex;
-            list-style: none;
+            gap: 30px;
         }
-        nav ul li {
-            margin-left: 2rem;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: #555;
+
+        .nav-links a {
+            color: var(--text-secondary);
             font-weight: 500;
-            transition: color 0.3s;
         }
-        nav ul li a:hover {
-            color: #0066cc;
+
+        .nav-links a:hover {
+            color: var(--accent);
         }
+
+        /* Hero Section */
         .hero {
-            padding: 6rem 0;
-            background-color: #fff;
-        }
-        .hero-content {
+            height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            text-align: center;
+            background-color: var(--darker-bg);
+            position: relative;
+            overflow: hidden;
         }
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: #000;
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.1), transparent 70%);
         }
-        .hero p {
-            font-size: 1.25rem;
-            color: #555;
-            max-width: 600px;
-            margin-bottom: 2rem;
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
         }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .highlight {
+            color: var(--accent);
+        }
+
         .btn {
             display: inline-block;
-            background-color: #0066cc;
-            color: #fff;
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background-color 0.3s;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
+
         .btn:hover {
-            background-color: #0055aa;
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            color: white;
         }
-        .projects {
-            padding: 5rem 0;
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            margin-left: 15px;
         }
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
+
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: white;
         }
-        .section-header h2 {
+
+        /* About Section */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
             font-size: 2rem;
-            color: #000;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
         }
-        .project-grid {
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        .about-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
         }
-        .project-card {
-            background-color: #fff;
-            border-radius: 8px;
+
+        .about-img {
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
         }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(16, 185, 129, 0.2), transparent);
+        }
+
+        .about-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .skill-tag {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
         .project-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
+
         .project-img {
-            width: 100%;
             height: 200px;
-            background-color: #e9ecef;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            overflow: hidden;
         }
-        .project-info {
-            padding: 1.5rem;
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
         }
-        .project-info h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
+
+        .project-card:hover .project-img img {
+            transform: scale(1.05);
         }
-        .project-info p {
-            color: #6c757d;
-            margin-bottom: 1rem;
+
+        .project-content {
+            padding: 20px;
         }
+
+        .project-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .project-content p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
         .project-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 8px;
+            margin-bottom: 15px;
         }
-        .tag {
-            background-color: #e9ecef;
-            padding: 0.25rem 0.75rem;
-            border-radius: 50px;
+
+        .project-tag {
             font-size: 0.8rem;
-            color: #495057;
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 4px;
         }
-        .about {
-            padding: 5rem 0;
-            background-color: #fff;
+
+        .project-links {
+            display: flex;
+            gap: 15px;
         }
-        .about-content {
+
+        .project-link {
+            font-size: 0.9rem;
             display: flex;
             align-items: center;
-            gap: 3rem;
+            gap: 6px;
         }
-        .about-img {
-            flex: 1;
-            height: 400px;
-            background-color: #e9ecef;
-            border-radius: 8px;
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--darker-bg);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(16, 185, 129, 0.1);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            color: var(--accent);
         }
-        .about-text {
-            flex: 1;
+
+        .contact-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
         }
-        .about-text h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
+
+        .contact-card p, .contact-card a {
+            color: var(--text-secondary);
         }
-        .skills {
-            padding: 5rem 0;
-        }
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
-        .skill-card {
-            background-color: #fff;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+        /* Footer */
+        footer {
+            background-color: var(--darker-bg);
+            padding: 40px 0;
             text-align: center;
         }
-        .skill-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: #0066cc;
-        }
-        .contact {
-            padding: 5rem 0;
-            background-color: #fff;
-        }
-        .contact-content {
-            display: flex;
-            gap: 3rem;
-        }
-        .contact-info {
-            flex: 1;
-        }
-        .contact-form {
-            flex: 2;
-        }
-        .contact-form form {
-            display: grid;
-            gap: 1rem;
-        }
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-        .form-group label {
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        .form-group input,
-        .form-group textarea {
-            padding: 0.75rem;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            font-family: inherit;
-        }
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-        footer {
-            background-color: #212529;
-            color: #fff;
-            padding: 3rem 0;
-        }
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+
         .social-links {
             display: flex;
-            gap: 1rem;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
         }
-        .social-links a {
-            color: #fff;
-            font-size: 1.25rem;
-            text-decoration: none;
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: var(--card-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
         }
+
+        .social-link:hover {
+            background-color: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
+            .hero-content h1 {
+                font-size: 2.5rem;
             }
-            nav ul {
-                margin-top: 1rem;
+            
+            .about-grid {
+                grid-template-columns: 1fr;
             }
-            nav ul li {
-                margin-left: 1rem;
-                margin-right: 1rem;
-            }
-            .about-content {
-                flex-direction: column;
-            }
-            .contact-content {
-                flex-direction: column;
-            }
-            .footer-content {
-                flex-direction: column;
-                gap: 2rem;
-                text-align: center;
-            }
-            .social-links {
-                justify-content: center;
+            
+            .nav-links {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
         <div class="container">
-            <div class="header-content">
-                <a href="#" class="logo">Portfolio</a>
-                <nav>
-                    <ul>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
-            </div>
+            <nav>
+                <a href="#" class="logo">Mandeep<span class="highlight">.</span></a>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
         </div>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Hello, I'm Mandeep Bhabhor</h1>
-                <p>A passionate Laravel Developer focused on creating elegant solutions to complex problems.</p>
-                <a href="#contact" class="btn">Get in Touch</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="projects" id="projects">
-        <div class="container">
-            <div class="section-header">
-                <h2>Featured Projects</h2>
-            </div>
-            <div class="project-grid">
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="/api/placeholder/400/320" alt="Project 1">
-                    </div>
-                    <div class="project-info">
-                        <h3>Project Name</h3>
-                        <p>A brief description of the project and your role in it.</p>
-                        <div class="project-tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="/api/placeholder/400/320" alt="Project 2">
-                    </div>
-                    <div class="project-info">
-                        <h3>Project Name</h3>
-                        <p>A brief description of the project and your role in it.</p>
-                        <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">MongoDB</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="/api/placeholder/400/320" alt="Project 3">
-                    </div>
-                    <div class="project-info">
-                        <h3>Project Name</h3>
-                        <p>A brief description of the project and your role in it.</p>
-                        <div class="project-tags">
-                            <span class="tag">UI/UX</span>
-                            <span class="tag">Figma</span>
-                            <span class="tag">Design</span>
-                        </div>
-                    </div>
+                <h1>Hi, I'm <span class="highlight">Mandeep Bhabhor</span></h1>
+                <p>Laravel Developer specializing in building web applications with a focus on efficient and scalable solutions. Currently pursuing B.Tech in College of Agricultural Information Technology at AAU, Anand.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn">View Projects</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="about" id="about">
+    <!-- About Section -->
+    <section class="section" id="about">
         <div class="container">
-            <div class="about-content">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
                 <div class="about-img">
-                    <img src="/api/placeholder/400/400" alt="Your Photo">
+                    <img src="/api/placeholder/500/500" alt="Mandeep Bhabhor">
                 </div>
-                <div class="about-text">
-                    <h2>About Me</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae tortor eu orci finibus fringilla. Nullam ac est id sapien bibendum tincidunt. Donec fermentum urna vitae justo iaculis, sit amet convallis tellus rutrum.</p>
-                    <p>Fusce ullamcorper nulla vel enim placerat, a tempus nisi eleifend. Vivamus eu ligula non eros lacinia aliquam. Phasellus vitae tempor magna. Etiam rhoncus nec odio quis finibus.</p>
-                    <a href="#" class="btn">Download Resume</a>
+                <div class="about-content">
+                    <h3>Laravel Developer & Final Year B.Tech Student</h3>
+                    <p>I'm Mandeep Rameshbhai Bhabhor, a passionate web developer with expertise in Laravel and hands-on experience in building e-commerce platforms and video streaming applications. Currently in my final year of B.Tech in Computer and IT at Anand Agricultural University.</p>
+                    <p>I enjoy tackling complex challenges and creating efficient, user-friendly web solutions. My technical knowledge spans across multiple frameworks and technologies, including Laravel, .NET Core MVC, and database management systems.</p>
+                    <div id="skills">
+                        <h3>Technical Skills</h3>
+                        <div class="skills">
+                            <span class="skill-tag">Laravel</span>
+                            <span class="skill-tag">PHP</span>
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">.NET Core MVC</span>
+                            <span class="skill-tag">SSMS</span>
+                            <span class="skill-tag">FFmpeg</span>
+                            <span class="skill-tag">HLS</span>
+                            <span class="skill-tag">E-commerce</span>
+                            <span class="skill-tag">Video Streaming</span>
+                            <span class="skill-tag">HTML/CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="skills" id="skills">
+    <!-- Projects Section -->
+    <section class="section" id="projects">
         <div class="container">
-            <div class="section-header">
-                <h2>Skills & Expertise</h2>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-icon">💻</div>
-                    <h3>Web Development</h3>
-                    <p>HTML, CSS, JavaScript</p>
+            <h2 class="section-title">My Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="/api/placeholder/400/300" alt="AgriMart Project">
+                    </div>
+                    <div class="project-content">
+                        <h3>AgriMart</h3>
+                        <p>An e-commerce platform focused on agricultural products. The application enables farmers to sell their products directly to consumers, eliminating intermediaries and providing better prices for both parties.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Laravel</span>
+                            <span class="project-tag">MySQL</span>
+                            <span class="project-tag">E-commerce</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fas fa-link"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/Mandeep-Bhabhor" class="project-link">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="skill-card">
-                    <div class="skill-icon">🎨</div>
-                    <h3>UI/UX Design</h3>
-                    <p>Figma, Adobe XD</p>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="/api/placeholder/400/300" alt="V-Stream Project">
+                    </div>
+                    <div class="project-content">
+                        <h3>V-Stream</h3>
+                        <p>A video streaming platform allowing users to upload, encode, and stream videos. Implements adaptive bitrate streaming using HLS.js and FFmpeg for multi-resolution encoding to provide optimal viewing experience across devices.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Laravel</span>
+                            <span class="project-tag">MySQL</span>
+                            <span class="project-tag">FFmpeg</span>
+                            <span class="project-tag">HLS.js</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fas fa-link"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/Mandeep-Bhabhor" class="project-link">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="skill-card">
-                    <div class="skill-icon">⚙️</div>
-                    <h3>Backend</h3>
-                    <p>Node.js, Express, MongoDB</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">📱</div>
-                    <h3>Mobile Development</h3>
-                    <p>React Native, Flutter</p>
+
+                <!-- Additional Project Card (if needed) -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="/api/placeholder/400/300" alt="Portfolio Project">
+                    </div>
+                    <div class="project-content">
+                        <h3>Personal Portfolio</h3>
+                        <p>My professional portfolio website showcasing my projects, skills, and experiences. Built with modern web technologies and responsive design principles.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML</span>
+                            <span class="project-tag">CSS</span>
+                            <span class="project-tag">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fas fa-link"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/Mandeep-Bhabhor" class="project-link">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="contact" id="contact">
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
         <div class="container">
-            <div class="section-header">
-                <h2>Get In Touch</h2>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <p>Feel free to reach out to me through any of these channels.</p>
-                    <p>Email: your.email@example.com</p>
-                    <p>Phone: +1 (123) 456-7890</p>
-                    <p>Location: City, Country</p>
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>mandeep.bhabhor@example.com</p>
                 </div>
-                <div class="contact-form">
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <h3>LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/mandeep-bhabhor-305a62334/">mandeep-bhabhor</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3>GitHub</h3>
+                    <a href="https://github.com/Mandeep-Bhabhor">Mandeep-Bhabhor</a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2025 [Your Name]. All Rights Reserved.</p>
-                <div class="social-links">
-                    <a href="#" title="GitHub">GitHub</a>
-                    <a href="#" title="LinkedIn">LinkedIn</a>
-                    <a href="#" title="Twitter">Twitter</a>
-                </div>
+            <div class="social-links">
+                <a href="https://github.com/Mandeep-Bhabhor" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/mandeep-bhabhor-305a62334/" class="social-link">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-twitter"></i>
+                </a>
             </div>
+            <p class="footer-text">&copy; 2025 Mandeep Bhabhor. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
