@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mandeep Bhabhor - Developer Portfolio</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
   <style>
     :root {
@@ -15,62 +18,39 @@
       --accent: #1DB954;
       --accent-hover: #1ed760;
       --border: #333333;
-      --gradient-bg: linear-gradient(135deg, #1DB954, #128a3e);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Circular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     }
 
     body {
       background-color: var(--main-bg);
       color: var(--text-primary);
-      display: flex;
-      min-height: 100vh;
+      font-family: 'Circular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
       overflow-x: hidden;
     }
 
     /* Sidebar Styles */
     .sidebar {
-      width: 240px;
       background-color: var(--sidebar-bg);
-      padding: 24px 16px;
-      display: flex;
-      flex-direction: column;
+      border-right: 1px solid var(--border);
       position: fixed;
       height: 100vh;
-      border-right: 1px solid var(--border);
+      width: 240px;
+      z-index: 1030;
+      transition: all 0.3s;
     }
 
     .logo {
+      color: var(--text-primary);
       font-size: 24px;
       font-weight: 700;
-      margin-bottom: 32px;
-      color: var(--text-primary);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
     }
 
     .nav-link {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 12px 16px;
-      border-radius: 4px;
-      font-weight: 600;
       color: var(--text-secondary);
-      text-decoration: none;
+      border-radius: 4px;
       transition: all 0.2s ease;
+      padding: 12px 16px;
+      margin-bottom: 4px;
+      border-left: 3px solid transparent;
     }
 
     .nav-link:hover, .nav-link.active {
@@ -87,7 +67,6 @@
     }
 
     .nav-link i {
-      font-size: 20px;
       width: 24px;
       text-align: center;
       transition: transform 0.3s ease;
@@ -95,24 +74,6 @@
     
     .nav-link:hover i {
       transform: translateX(3px);
-    }
-
-    .contact-info {
-      margin-top: auto;
-      padding: 16px;
-      border-top: 1px solid var(--border);
-    }
-
-    .contact-info p {
-      color: var(--text-secondary);
-      font-size: 14px;
-      margin-bottom: 8px;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 16px;
-      margin-top: 16px;
     }
 
     .social-link {
@@ -127,23 +88,9 @@
 
     /* Main Content Styles */
     .main-content {
-      flex: 1;
       margin-left: 240px;
       padding: 32px;
-      width: calc(100% - 240px);
-    }
-
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 40px;
-    }
-
-    .user-profile {
-      display: flex;
-      align-items: center;
-      gap: 16px;
+      transition: margin-left 0.3s;
     }
 
     .profile-img {
@@ -158,27 +105,13 @@
       color: var(--accent);
     }
 
-    .section {
-      margin-bottom: 48px;
-    }
-
     .section-title {
       font-size: 28px;
       font-weight: 700;
       margin-bottom: 30px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      position: relative;
       padding-bottom: 10px;
+      position: relative;
     }
-.round-img {
-  width: 100px;        /* You can adjust the size */
-  height: 100px;
-  border-radius: 50%;  /* Makes the image round */
-  object-fit: cover;   /* Ensures image fits in the circle */
-  border: 2px solid #ccc;  /* Optional border for style */
-}
 
     .section-title::after {
       content: '';
@@ -187,9 +120,7 @@
       left: 0;
       width: 60px;
       height: 3px;
-      background: var(--gradient-bg);
-      background-size: 200% 200%;
-      animation: gradient-shift 3s ease infinite;
+      background: linear-gradient(135deg, var(--accent), #128a3e);
       border-radius: 3px;
     }
 
@@ -202,8 +133,6 @@
     .about-content {
       background-color: var(--card-bg);
       border-radius: 12px;
-      padding: 30px;
-      margin-bottom: 24px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.15);
       position: relative;
       overflow: hidden;
@@ -231,38 +160,12 @@
       top: 0;
     }
 
-    .about-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .about-header .profile-img {
-      width: 80px;
-      height: 80px;
-      font-size: 32px;
-    }
-
-    .about-bio h3 {
-      font-size: 20px;
-      margin-bottom: 8px;
-    }
-
-    .about-bio p {
-      color: var(--text-secondary);
-      margin-bottom: 16px;
-      line-height: 1.6;
-    }
-
-    .about-stats {
-      display: flex;
-      gap: 24px;
-      margin-top: 16px;
-    }
-
-    .stat {
-      text-align: center;
+    .round-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ccc;
     }
 
     .stat-value {
@@ -280,23 +183,10 @@
     }
 
     /* Skills Section */
-    .skills-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 16px;
-    }
-
     .skill-tag {
       background-color: var(--card-bg);
       color: var(--text-primary);
-      padding: 10px 18px;
       border-radius: 20px;
-      font-size: 14px;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 8px;
       transition: all 0.3s ease;
       cursor: pointer;
       border: 1px solid transparent;
@@ -319,12 +209,6 @@
     }
 
     /* Projects Section */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 24px;
-    }
-
     .project-card {
       background-color: var(--card-bg);
       border-radius: 8px;
@@ -340,10 +224,7 @@
 
     .project-top {
       height: 160px;
-      background: var(--gradient-bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: linear-gradient(135deg, var(--accent), #128a3e);
       color: white;
       font-size: 48px;
       position: relative;
@@ -373,35 +254,9 @@
       transform: scale(1.2);
     }
 
-    .project-content {
-      padding: 20px;
-    }
-
-    .project-content h3 {
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .project-content p {
-      color: var(--text-secondary);
-      margin-bottom: 16px;
-      font-size: 14px;
-      line-height: 1.4;
-    }
-
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
     .project-tag {
       background-color: rgba(255, 255, 255, 0.1);
       color: var(--text-secondary);
-      padding: 4px 10px;
-      border-radius: 4px;
       font-size: 12px;
     }
 
@@ -411,10 +266,6 @@
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
       opacity: 0;
       transform: translateY(10px);
       transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
@@ -434,23 +285,10 @@
     }
 
     /* Contact Section */
-    .contact-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
     .contact-card {
       background-color: var(--card-bg);
       border-radius: 8px;
-      padding: 20px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
       transition: transform 0.3s ease, background-color 0.3s ease;
-    }
-
-    .contact-card {
       cursor: pointer;
     }
     
@@ -464,10 +302,7 @@
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      background: var(--gradient-bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: linear-gradient(135deg, var(--accent), #128a3e);
       font-size: 20px;
       color: white;
       transition: transform 0.3s ease;
@@ -478,105 +313,43 @@
       transform: rotate(15deg);
     }
 
-    .contact-details h3 {
-      font-size: 16px;
-      margin-bottom: 4px;
-    }
-
-    .contact-details p {
-      color: var(--text-secondary);
-      font-size: 14px;
-    }
-
     /* Footer */
     .footer {
-      text-align: center;
-      padding: 20px 0;
-      margin-top: auto;
       color: var(--text-secondary);
-      font-size: 14px;
       border-top: 1px solid var(--border);
-      margin-top: 64px;
     }
 
+    /* Playbar */
     .playbar {
-  position: fixed;
-  top: 16px;
-  right: 16px;
-  background-color: #181818cc;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  height: auto;
-  width: 320px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-  padding: 16px;
-  backdrop-filter: blur(6px);
-  flex-direction: column;
-}
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      background-color: rgba(24, 24, 24, 0.8);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      width: 320px;
+      z-index: 100;
+      backdrop-filter: blur(6px);
+    }
 
-.playbar-container {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  flex-direction: column;
-  align-items: flex-start;
-}
+    .currently-playing-icon i {
+      color: var(--accent);
+      animation: pulse 1.5s infinite;
+    }
 
-.currently-playing {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  margin-bottom: 10px;
-}
+    .progress-bar-custom {
+      height: 4px;
+      background-color: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
 
-.currently-playing-icon i {
-  font-size: 24px;
-  color: var(--accent, #1db954); /* Default to Spotify green */
-  animation: pulse 1.5s infinite;
-}
-
-.currently-playing-title {
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
-}
-
-.currently-playing-subtitle {
-  font-size: 14px;
-  color: #bbbbbb;
-}
-
-.progress-bar {
-  width: 100%;
-  height: 4px;
-  background-color: #333;
-  border-radius: 2px;
-  margin: 10px 0;
-  overflow: hidden;
-}
-
-.progress {
-  width: 40%;
-  height: 100%;
-  background-color: var(--accent, #1db954);
-  animation: progressMove 3s infinite alternate;
-}
-
-@keyframes progressMove {
-  0% { width: 30%; }
-  100% { width: 80%; }
-}
-
-.view-count {
-  font-size: 14px;
-  color: #ffffffcc;
-  margin-top: 4px;
-}
-
+    .progress-custom {
+      height: 100%;
+      width: 35%;
+      background: linear-gradient(135deg, var(--accent), #128a3e);
+      animation: progressMove 3s infinite alternate;
+    }
 
     @keyframes pulse {
       0% { opacity: 0.6; transform: scale(1); }
@@ -590,154 +363,89 @@
       100% { transform: translateY(0px); }
     }
     
-    @keyframes gradient-shift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    @keyframes progressMove {
+      0% { width: 30%; }
+      100% { width: 80%; }
     }
 
-    .currently-playing-text {
-      flex: 1;
-    }
-
-    .currently-playing-title {
-      font-weight: 600;
-      font-size: 14px;
-    }
-
-    .currently-playing-subtitle {
-      color: var(--text-secondary);
-      font-size: 12px;
-    }
-
-    .progress-bar {
-      width: 100%;
-      height: 4px;
-      background-color: var(--border);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .progress {
-      height: 100%;
-      width: 35%;
-      background: var(--gradient-bg);
-      background-size: 200% 200%;
-      animation: gradient-shift 5s ease infinite;
-    }
-
-    /* Responsive */
-    @media (max-width: 1024px) {
+    /* Responsive Styles */
+    @media (max-width: 991.98px) {
       .sidebar {
         width: 80px;
       }
       
       .sidebar .logo span,
       .nav-link span,
-      .contact-info {
+      .sidebar .contact-info {
         display: none;
       }
       
       .main-content {
         margin-left: 80px;
-        width: calc(100% - 80px);
       }
     }
 
-    @media (max-width: 768px) {
-      body {
-        flex-direction: column;
-      }
-      
+    @media (max-width: 767.98px) {
       .sidebar {
         width: 100%;
-        height: 60px;
-        flex-direction: row;
-        padding: 0 16px;
-        align-items: center;
+        height: auto;
         position: fixed;
-        top: 0;
-        bottom: auto;
-        z-index: 1000;
+        bottom: 0;
+        top: auto;
       }
       
-      .logo {
-        margin-bottom: 0;
-      }
-      
-      .nav-links {
-        flex-direction: row;
-        margin-left: 24px;
+      .sidebar .nav-links {
+        display: flex;
+        justify-content: space-around;
       }
       
       .main-content {
         margin-left: 0;
-        margin-top: 72px;
-        width: 100%;
-        padding: 16px;
+        margin-bottom: 70px;
+        padding: 20px;
       }
       
       .playbar {
-        padding: 0 16px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .projects-grid,
-      .contact-cards {
-        grid-template-columns: 1fr;
-      }
-      
-      .header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
+        width: 90%;
+        right: 5%;
+        left: 5%;
       }
     }
   </style>
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    let views = localStorage.getItem("playbarViews") || 0;
-    views++;
-    localStorage.setItem("playbarViews", views);
-    document.getElementById("viewCounter").textContent = views;
-  });
-</script>
-
 </head>
 <body>
   <!-- Sidebar -->
-  <aside class="sidebar">
-    <div class="logo">
+  <div class="sidebar d-flex flex-column">
+    <div class="logo p-4 d-flex align-items-center gap-2">
       <i class="fas fa-code"></i>
       <span>Mandeep</span>
     </div>
-    <nav class="nav-links">
-      <a href="#home" class="nav-link active">
-        <i class="fas fa-home"></i>
+    <nav class="nav-links px-2 flex-grow-1">
+      <a href="#home" class="nav-link active d-flex align-items-center">
+        <i class="fas fa-home me-3"></i>
         <span>Home</span>
       </a>
-      <a href="#about" class="nav-link">
-        <i class="fas fa-user"></i>
+      <a href="#about" class="nav-link d-flex align-items-center">
+        <i class="fas fa-user me-3"></i>
         <span>About</span>
       </a>
-      <a href="#skills" class="nav-link">
-        <i class="fas fa-chart-bar"></i>
+      <a href="#skills" class="nav-link d-flex align-items-center">
+        <i class="fas fa-chart-bar me-3"></i>
         <span>Skills</span>
       </a>
-      <a href="#projects" class="nav-link">
-        <i class="fas fa-laptop-code"></i>
+      <a href="#projects" class="nav-link d-flex align-items-center">
+        <i class="fas fa-laptop-code me-3"></i>
         <span>Projects</span>
       </a>
-      <a href="#contact" class="nav-link">
-        <i class="fas fa-envelope"></i>
+      <a href="#contact" class="nav-link d-flex align-items-center">
+        <i class="fas fa-envelope me-3"></i>
         <span>Contact</span>
       </a>
     </nav>
-    <div class="contact-info">
-      <p>mdpbhabhor@gmail.com</p>
-      <p>Gandhinagar, Gujarat, India</p>
-      <div class="social-links">
+    <div class="contact-info p-4 mt-auto d-none d-lg-block">
+      <p class="mb-2">mdpbhabhor@gmail.com</p>
+      <p class="mb-2">Gandhinagar, Gujarat, India</p>
+      <div class="social-links d-flex gap-3">
         <a href="https://github.com/Mandeep-Bhabhor" class="social-link" target="_blank">
           <i class="fab fa-github"></i>
         </a>
@@ -746,145 +454,172 @@
         </a>
       </div>
     </div>
-  </aside>
+  </div>
 
   <!-- Main Content -->
-  <main class="main-content">
-    <div class="header" id="home">
-      <div class="user-profile">
+  <div class="main-content">
+    <div class="header d-flex justify-content-between align-items-center mb-5" id="home">
+      <div class="user-profile d-flex align-items-center gap-3">
         <div class="profile-img">
           <i class="fas fa-user"></i>
         </div>
         <div>
-          <h1>Mandeep Bhabhor</h1>
-          <p>Laravel Developer</p>
+          <h1 class="mb-0">Mandeep Bhabhor</h1>
+          <p class="mb-0">Laravel Developer</p>
         </div>
       </div>
     </div>
 
     <!-- About Section -->
-    <section class="section" id="about">
-      <h2 class="section-title">
+    <section class="section mb-5" id="about">
+      <h2 class="section-title d-flex align-items-center gap-2">
         <i class="fas fa-user-circle"></i>
         About Me
       </h2>
-      <div class="about-content">
-        <div class="about-header">
-          <div class="profile-img">
-  <img src="pfp.png" alt="Profile Picture" class="round-img">
-</div>
-
-          <div class="about-bio">
-            <h3>Final-year B.Tech CAIT student at AAU, Anand</h3>
-            <p>Skilled in Laravel, MySQL, Bootstrap, and video streaming technologies (HLS.js, FFmpeg). I've built projects like Agrimart and V-Stream, combining backend logic with intuitive frontends.</p>
+      <div class="about-content p-4">
+        <div class="row mb-4">
+          <div class="col-md-12 d-flex align-items-center gap-4">
+            <div>
+              <img src="pfp.png" alt="Profile Picture" class="round-img">
+            </div>
+            <div>
+              <h3 class="h5 mb-2">Final-year B.Tech CAIT student at AAU, Anand</h3>
+              <p class="text-secondary mb-0">Skilled in Laravel, MySQL, Bootstrap, and video streaming technologies (HLS.js, FFmpeg). I've built projects like Agrimart and V-Stream, combining backend logic with intuitive frontends.</p>
+            </div>
           </div>
         </div>
-        <div class="about-stats">
-          <div class="stat">
-            <div class="stat-value">1+</div>
-            <div class="stat-label">Years Experience in Laravel</div>
+        <div class="row text-center">
+          <div class="col-md-4">
+            <div class="stat">
+              <div class="stat-value">1+</div>
+              <div class="stat-label">Years Experience in Laravel</div>
+            </div>
           </div>
-          <div class="stat">
-            <div class="stat-value">5+</div>
-            <div class="stat-label">Technologies</div>
+          <div class="col-md-4">
+            <div class="stat">
+              <div class="stat-value">5+</div>
+              <div class="stat-label">Technologies</div>
+            </div>
           </div>
-          <div class="stat">
-            <div class="stat-value">2</div>
-            <div class="stat-label">Major Projects</div>
+          <div class="col-md-4">
+            <div class="stat">
+              <div class="stat-value">2</div>
+              <div class="stat-label">Major Projects</div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Skills Section -->
-    <section class="section" id="skills">
-      <h2 class="section-title">
+    <section class="section mb-5" id="skills">
+      <h2 class="section-title d-flex align-items-center gap-2">
         <i class="fas fa-chart-bar"></i>
         Top Skills
       </h2>
-      <div class="skills-grid">
-        <div class="skill-tag">
-          <i class="fab fa-laravel"></i>
-          Laravel
+      <div class="row g-3">
+        <div class="col-6 col-md-3">
+          <div class="skill-tag p-3 d-flex align-items-center gap-2">
+            <i class="fab fa-laravel"></i>
+            Laravel
+          </div>
         </div>
-        <div class="skill-tag">
-          <i class="fas fa-database"></i>
-          MySQL
+        <div class="col-6 col-md-3">
+          <div class="skill-tag p-3 d-flex align-items-center gap-2">
+            <i class="fas fa-database"></i>
+            MySQL
+          </div>
         </div>
-        <div class="skill-tag">
-          <i class="fab fa-bootstrap"></i>
-          Bootstrap
+        <div class="col-6 col-md-3">
+          <div class="skill-tag p-3 d-flex align-items-center gap-2">
+            <i class="fab fa-bootstrap"></i>
+            Bootstrap
+          </div>
         </div>
-        <div class="skill-tag">
-          <i class="fas fa-code"></i>
-          HTML/CSS
+        <div class="col-6 col-md-3">
+          <div class="skill-tag p-3 d-flex align-items-center gap-2">
+            <i class="fas fa-code"></i>
+            HTML/CSS
+          </div>
         </div>
-        <div class="skill-tag">
-          <i class="fas fa-video"></i>
-          FFmpeg
+        <div class="col-6 col-md-3">
+          <div class="skill-tag p-3 d-flex align-items-center gap-2">
+            <i class="fas fa-video"></i>
+            FFmpeg
+          </div>
         </div>
-        <div class="skill-tag">
-          <i class="fab fa-git-alt"></i>
-          Git
+        <div class="col-6 col-md-3">
+          <div class="skill-tag p-3 d-flex align-items-center gap-2">
+            <i class="fab fa-git-alt"></i>
+            Git
+          </div>
         </div>
-        <div class="skill-tag">
-          <i class="fab fa-php"></i>
-          PHP
+        <div class="col-6 col-md-3">
+          <div class="skill-tag p-3 d-flex align-items-center gap-2">
+            <i class="fab fa-php"></i>
+            PHP
+          </div>
         </div>
-        <div class="skill-tag">
-          <i class="fab fa-js"></i>
-          JavaScript
+        <div class="col-6 col-md-3">
+          <div class="skill-tag p-3 d-flex align-items-center gap-2">
+            <i class="fab fa-js"></i>
+            JavaScript
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Projects Section -->
-    <section class="section" id="projects">
-      <h2 class="section-title">
+    <section class="section mb-5" id="projects">
+      <h2 class="section-title d-flex align-items-center gap-2">
         <i class="fas fa-laptop-code"></i>
         Featured Projects
       </h2>
-      <div class="projects-grid">
+      <div class="row g-4">
         <!-- Project 1 -->
-        <div class="project-card">
-          <div class="project-top">
-            <i class="fas fa-shopping-basket"></i>
-          </div>
-          <div class="project-content">
-            <h3>
-              Agrimart
-              <div class="project-play">
-                <i class="fas fa-play"></i>
+        <div class="col-md-6">
+          <div class="project-card h-100">
+            <div class="project-top d-flex align-items-center justify-content-center">
+              <i class="fas fa-shopping-basket"></i>
+            </div>
+            <div class="p-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h3 class="h5">Agrimart</h3>
+                <div class="project-play d-flex align-items-center justify-content-center">
+                  <i class="fas fa-play"></i>
+                </div>
               </div>
-            </h3>
-            <p>An e-commerce platform for agricultural products, featuring admin and customer roles. Users can browse, purchase, and sell agricultural products.</p>
-            <div class="project-tags">
-              <div class="project-tag">Laravel</div>
-              <div class="project-tag">MySQL</div>
-              <div class="project-tag">Bootstrap</div>
-              <div class="project-tag">E-commerce</div>
+              <p class="text-secondary mb-3">An e-commerce platform for agricultural products, featuring admin and customer roles. Users can browse, purchase, and sell agricultural products.</p>
+              <div class="d-flex flex-wrap gap-2">
+                <span class="project-tag px-2 py-1 rounded">Laravel</span>
+                <span class="project-tag px-2 py-1 rounded">MySQL</span>
+                <span class="project-tag px-2 py-1 rounded">Bootstrap</span>
+                <span class="project-tag px-2 py-1 rounded">E-commerce</span>
+              </div>
             </div>
           </div>
         </div>
         
         <!-- Project 2 -->
-        <div class="project-card">
-          <div class="project-top">
-            <i class="fas fa-video"></i>
-          </div>
-          <div class="project-content">
-            <h3>
-              V-Stream
-              <div class="project-play">
-                <i class="fas fa-play"></i>
+        <div class="col-md-6">
+          <div class="project-card h-100">
+            <div class="project-top d-flex align-items-center justify-content-center">
+              <i class="fas fa-video"></i>
+            </div>
+            <div class="p-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h3 class="h5">V-Stream</h3>
+                <div class="project-play d-flex align-items-center justify-content-center">
+                  <i class="fas fa-play"></i>
+                </div>
               </div>
-            </h3>
-            <p>A video streaming platform with HLS support, multi-resolution encoding, and role-based access. Designed for efficient video streaming at various bandwidths.</p>
-            <div class="project-tags">
-              <div class="project-tag">Laravel</div>
-              <div class="project-tag">FFmpeg</div>
-              <div class="project-tag">Video Tech</div>
-              <div class="project-tag">Streaming</div>
+              <p class="text-secondary mb-3">A video streaming platform with HLS support, multi-resolution encoding, and role-based access. Designed for efficient video streaming at various bandwidths.</p>
+              <div class="d-flex flex-wrap gap-2">
+                <span class="project-tag px-2 py-1 rounded">Laravel</span>
+                <span class="project-tag px-2 py-1 rounded">FFmpeg</span>
+                <span class="project-tag px-2 py-1 rounded">Video Tech</span>
+                <span class="project-tag px-2 py-1 rounded">Streaming</span>
+              </div>
             </div>
           </div>
         </div>
@@ -892,191 +627,187 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="section" id="contact">
-      <h2 class="section-title">
+    <section class="section mb-5" id="contact">
+      <h2 class="section-title d-flex align-items-center gap-2">
         <i class="fas fa-paper-plane"></i>
         Get in Touch
       </h2>
-      <div class="contact-cards">
-        <div class="contact-card">
-          <div class="contact-icon">
-            <i class="fas fa-envelope"></i>
-          </div>
-          <div class="contact-details">
-            <h3>Email</h3>
-            <p>mdpbhabhor@gmail.com</p>
-          </div>
-        </div>
-        <div class="contact-card">
-          <div class="contact-icon">
-            <i class="fas fa-map-marker-alt"></i>
-          </div>
-          <div class="contact-details">
-            <h3>Location</h3>
-            <p>Gandhinagar, Gujarat, India</p>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <div class="contact-card p-3">
+            <div class="d-flex align-items-center gap-3">
+              <div class="contact-icon d-flex align-items-center justify-content-center">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <h3 class="h6 mb-1">Email</h3>
+                <p class="text-secondary mb-0">mdpbhabhor@gmail.com</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="contact-card">
-          <div class="contact-icon">
-            <i class="fab fa-github"></i>
-          </div>
-          <div class="contact-details">
-            <h3>GitHub</h3>
-            <p>Mandeep-Bhabhor</p>
+        <div class="col-md-6 col-lg-3">
+          <div class="contact-card p-3">
+            <div class="d-flex align-items-center gap-3">
+              <div class="contact-icon d-flex align-items-center justify-content-center">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <h3 class="h6 mb-1">Location</h3>
+                <p class="text-secondary mb-0">Gandhinagar, Gujarat, India</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="contact-card">
-          <div class="contact-icon">
-            <i class="fab fa-linkedin"></i>
+        <div class="col-md-6 col-lg-3">
+          <div class="contact-card p-3">
+            <div class="d-flex align-items-center gap-3">
+              <div class="contact-icon d-flex align-items-center justify-content-center">
+                <i class="fab fa-github"></i>
+              </div>
+              <div>
+                <h3 class="h6 mb-1">GitHub</h3>
+                <p class="text-secondary mb-0">Mandeep-Bhabhor</p>
+              </div>
+            </div>
           </div>
-          <div class="contact-details">
-            <h3>LinkedIn</h3>
-            <p>mandeep-bhabhor</p>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="contact-card p-3">
+            <div class="d-flex align-items-center gap-3">
+              <div class="contact-icon d-flex align-items-center justify-content-center">
+                <i class="fab fa-linkedin"></i>
+              </div>
+              <div>
+                <h3 class="h6 mb-1">LinkedIn</h3>
+                <p class="text-secondary mb-0">mandeep-bhabhor</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <footer class="footer">
-      <p>© 2025 Mandeep Bhabhor. All rights reserved.</p>
+    <footer class="footer py-4 text-center mt-5">
+      <p class="mb-0">© 2025 Mandeep Bhabhor. All rights reserved.</p>
     </footer>
-  </main>
+  </div>
 
-  <!-- Playbar (fixed at bottom) -->
-  <div class="playbar">
-  <div class="playbar-container">
-    <div class="currently-playing">
-      <div class="currently-playing-icon">
-  <i class="fa fa-play-circle"></i>
-</div>
-
-      <div class="currently-playing-text">
-        <div class="currently-playing-title">Currently working on new projects</div>
-        <div class="currently-playing-subtitle">Available for freelance opportunities</div>
+  <!-- Playbar -->
+  <div class="playbar py-3 px-4">
+    <div class="d-flex flex-column">
+      <div class="d-flex align-items-center gap-3 mb-2">
+        <div class="currently-playing-icon">
+          <i class="fa fa-play-circle"></i>
+        </div>
+        <div class="flex-grow-1">
+          <div class="text-white fw-bold">Currently working on new projects</div>
+          <div class="text-secondary small">Available for freelance opportunities</div>
+        </div>
+      </div>
+      <div class="progress-bar-custom mb-2">
+        <div class="progress-custom"></div>
+      </div>
+      <div class="text-white-50 small">
+        Site Listened By: <span id="viewCounter">0</span>
       </div>
     </div>
-
-    <div class="progress-bar">
-      <div class="progress"></div>
-    </div>
-
-    <div class="view-count">
-      Site Listened By: <span id="viewCounter">0</span>
-    </div>
   </div>
-</div>
 
+  <!-- Bootstrap JS and Popper.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Handle navigation highlighting
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section');
-    
-    // Smooth scroll for navigation links
-    navLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        
-        window.scrollTo({
-          top: targetSection.offsetTop - 80,
-          behavior: 'smooth'
+    document.addEventListener("DOMContentLoaded", function () {
+      // View counter
+      let views = localStorage.getItem("playbarViews") || 0;
+      views++;
+      localStorage.setItem("playbarViews", views);
+      document.getElementById("viewCounter").textContent = views;
+      
+      // Handle navigation highlighting
+      const navLinks = document.querySelectorAll('.nav-link');
+      const sections = document.querySelectorAll('section');
+      
+      // Smooth scroll for navigation links
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetSection = document.querySelector(targetId);
+          
+          window.scrollTo({
+            top: targetSection.offsetTop - 80,
+            behavior: 'smooth'
+          });
         });
       });
-    });
-    
-    // Active section highlighting on scroll
-    window.addEventListener('scroll', () => {
-      let current = '';
       
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
+      // Active section highlighting on scroll
+      window.addEventListener('scroll', () => {
+        let current = '';
         
-        if (pageYOffset >= (sectionTop - 200)) {
-          current = section.getAttribute('id');
-        }
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          
+          if (pageYOffset >= (sectionTop - 200)) {
+            current = section.getAttribute('id');
+          }
+        });
+        
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href').substring(1) === current) {
+            link.classList.add('active');
+          }
+        });
       });
       
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').substring(1) === current) {
-          link.classList.add('active');
+      // Project card interactions
+      const projectCards = document.querySelectorAll('.project-card');
+      const projectPlays = document.querySelectorAll('.project-play');
+      
+      projectPlays.forEach((playBtn, index) => {
+        playBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          alert('Project demo would launch here!');
+        });
+      });
+      
+      // Contact card interactions
+      const contactCards = document.querySelectorAll('.contact-card');
+      
+      contactCards.forEach(card => {
+        card.addEventListener('click', function() {
+          // Get contact type and info
+          const contactType = this.querySelector('h3').textContent;
+          const contactInfo = this.querySelector('p').textContent;
+          
+          // Handle different contact methods
+          if (contactType === 'Email') {
+            window.location.href = `mailto:${contactInfo}`;
+          } else if (contactType === 'GitHub') {
+            window.open('https://github.com/Mandeep-Bhabhor', '_blank');
+          } else if (contactType === 'LinkedIn') {
+            window.open('https://www.linkedin.com/in/mandeep-bhabhor-305a62334/', '_blank');
+          }
+        });
+      });
+      
+      // Easter egg - logo color change
+      let clickCount = 0;
+      const logo = document.querySelector('.logo');
+      
+      logo.addEventListener('click', function() {
+        clickCount++;
+        if (clickCount >= 5) {
+          const newAccent = '#' + Math.floor(Math.random()*16777215).toString(16);
+          const newAccentHover = '#' + Math.floor(Math.random()*16777215).toString(16);
+          document.documentElement.style.setProperty('--accent', newAccent);
+          document.documentElement.style.setProperty('--accent-hover', newAccentHover);
+          clickCount = 0;
         }
       });
-    });
-    
-    // Add interactivity to project cards
-    const projectCards = document.querySelectorAll('.project-card');
-    const projectPlays = document.querySelectorAll('.project-play');
-    
-    projectPlays.forEach((playBtn, index) => {
-      playBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        alert('Project demo would launch here!');
-      });
-    });
-    
-    projectCards.forEach(card => {
-      card.addEventListener('click', function() {
-        // Simple animation on card click
-        this.style.transform = 'scale(0.98)';
-        setTimeout(() => {
-          this.style.transform = '';
-        }, 200);
-      });
-    });
-    
-    // Make contact cards interactive
-    const contactCards = document.querySelectorAll('.contact-card');
-    
-    contactCards.forEach(card => {
-      card.addEventListener('click', function() {
-        // Simple animation on card click
-        this.style.transform = 'scale(0.98) translateY(-5px)';
-        setTimeout(() => {
-          this.style.transform = 'translateY(-5px)';
-        }, 200);
-        
-        // Get contact type and info
-        const contactType = this.querySelector('h3').textContent;
-        const contactInfo = this.querySelector('p').textContent;
-        
-        // Handle different contact methods
-        if (contactType === 'Email') {
-          window.location.href = `mailto:${contactInfo}`;
-        } else if (contactType === 'GitHub') {
-          window.open('https://github.com/Mandeep-Bhabhor', '_blank');
-        } else if (contactType === 'LinkedIn') {
-          window.open('https://www.linkedin.com/in/mandeep-bhabhor-305a62334/', '_blank');
-        }
-      });
-    });
-    
-    // Add animations for skill tags
-    const skillTags = document.querySelectorAll('.skill-tag');
-    
-    skillTags.forEach(tag => {
-      tag.addEventListener('click', function() {
-        this.style.transform = 'scale(0.9) translateY(-5px)';
-        setTimeout(() => {
-          this.style.transform = 'translateY(-5px)';
-        }, 200);
-      });
-    });
-    
-    // Add an Easter egg
-    let clickCount = 0;
-    const logo = document.querySelector('.logo');
-    
-    logo.addEventListener('click', function() {
-      clickCount++;
-      if (clickCount >= 5) {
-        document.documentElement.style.setProperty('--accent', '#' + Math.floor(Math.random()*16777215).toString(16));
-        document.documentElement.style.setProperty('--accent-hover', '#' + Math.floor(Math.random()*16777215).toString(16));
-        document.documentElement.style.setProperty('--gradient-bg', `linear-gradient(135deg, var(--accent), var(--accent-hover))`);
-        clickCount = 0;
-      }
     });
   </script>
 </body>
