@@ -491,29 +491,30 @@
     /* Footer */
     .footer {
       text-align: center;
-      padding: 32px 0;
+      padding: 20px 0;
+      margin-top: auto;
       color: var(--text-secondary);
       font-size: 14px;
       border-top: 1px solid var(--border);
       margin-top: 64px;
     }
 
-    /* Playbar (fixed at bottom) */
-   .playbar {
+    .playbar {
   position: fixed;
-  top: 16px;           /* margin from the top */
-  right: 16px;         /* margin from the right */
-  background-color: #181818cc; /* semi-transparent dark background */
+  top: 16px;
+  right: 16px;
+  background-color: #181818cc;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  height: 60px;
-  width: 300px;        /* you can adjust width as needed */
+  height: auto;
+  width: 320px;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 100;
-  padding: 0 16px;
-  backdrop-filter: blur(6px); /* optional blur effect */
+  padding: 16px;
+  backdrop-filter: blur(6px);
+  flex-direction: column;
 }
 
 .playbar-container {
@@ -521,21 +522,59 @@
   width: 100%;
   justify-content: center;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .currently-playing {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
   width: 100%;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
-.currently-playing-icon {
+.currently-playing-icon i {
   font-size: 24px;
-  color: var(--accent);
+  color: var(--accent, #1db954); /* Default to Spotify green */
   animation: pulse 1.5s infinite;
+}
+
+.currently-playing-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+
+.currently-playing-subtitle {
+  font-size: 14px;
+  color: #bbbbbb;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background-color: #333;
+  border-radius: 2px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.progress {
+  width: 40%;
+  height: 100%;
+  background-color: var(--accent, #1db954);
+  animation: progressMove 3s infinite alternate;
+}
+
+@keyframes progressMove {
+  0% { width: 30%; }
+  100% { width: 80%; }
+}
+
+.view-count {
+  font-size: 14px;
+  color: #ffffffcc;
+  margin-top: 4px;
 }
 
 
@@ -656,6 +695,15 @@
       }
     }
   </style>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    let views = localStorage.getItem("playbarViews") || 0;
+    views++;
+    localStorage.setItem("playbarViews", views);
+    document.getElementById("viewCounter").textContent = views;
+  });
+</script>
+
 </head>
 <body>
   <!-- Sidebar -->
@@ -896,21 +944,27 @@
 
   <!-- Playbar (fixed at bottom) -->
   <div class="playbar">
-    <div class="playbar-container">
-      <div class="currently-playing">
-        <div class="currently-playing-icon">
-          <i class="fas fa-code"></i>
-        </div>
-        <div class="currently-playing-text">
-          <div class="currently-playing-title">Currently working on new projects</div>
-          <div class="currently-playing-subtitle">Available for freelance opportunities</div>
-        </div>
-      </div>
-      <div class="progress-bar">
-        <div class="progress"></div>
+  <div class="playbar-container">
+    <div class="currently-playing">
+      <div class="currently-playing-icon">
+  <i class="fa fa-play-circle"></i>
+</div>
+
+      <div class="currently-playing-text">
+        <div class="currently-playing-title">Currently working on new projects</div>
+        <div class="currently-playing-subtitle">Available for freelance opportunities</div>
       </div>
     </div>
+
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
+
+    <div class="view-count">
+      Site Listened By: <span id="viewCounter">0</span>
+    </div>
   </div>
+</div>
 
   <script>
     // Handle navigation highlighting
