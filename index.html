@@ -166,6 +166,12 @@
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid #ccc;
+      background-color: var(--card-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 32px;
     }
 
     .stat-value {
@@ -476,15 +482,17 @@
         <i class="fas fa-user-circle"></i>
         About Me
       </h2>
-      <div class="about-content p-4">
+      <div class="about-content p-4 position-relative">
         <div class="row mb-4">
           <div class="col-md-12 d-flex align-items-center gap-4">
             <div>
-              <img src="pfp.png" alt="Profile Picture" class="round-img">
+              <div class="round-img">
+                <i class="fas fa-user"></i>
+              </div>
             </div>
             <div>
               <h3 class="h5 mb-2">Final-year B.Tech CAIT student at AAU, Anand</h3>
-              <p class="text-secondary mb-0">Skilled in Laravel, MySQL, Bootstrap, and video streaming technologies (HLS.js, basic knowledge of FFmpeg). I've built projects like Agrimart and V-Stream, combining backend logic with responsive Bootstrap-based frontends</p>
+              <p class="text-secondary mb-0">Skilled in Laravel, MySQL, Bootstrap, and video streaming technologies (HLS.js, basic knowledge of FFmpeg). I've built projects like Agrimart and V-Stream, combining backend logic with responsive Bootstrap-based frontends.</p>
             </div>
           </div>
         </div>
@@ -541,8 +549,6 @@
             <i class="fas fa-code"></i>
             HTML/CSS
           </div>
-        </div>
-       
         </div>
         <div class="col-6 col-md-3">
           <div class="skill-tag p-3 d-flex align-items-center gap-2">
@@ -612,7 +618,6 @@
               <p class="text-secondary mb-3">A video streaming platform with HLS support, multi-resolution encoding, and role-based access. Designed for efficient video streaming at various bandwidths.</p>
               <div class="d-flex flex-wrap gap-2">
                 <span class="project-tag px-2 py-1 rounded">Laravel</span>
-                <!-- <span class="project-tag px-2 py-1 rounded">FFmpeg</span> -->
                 <span class="project-tag px-2 py-1 rounded">Video Tech</span>
                 <span class="project-tag px-2 py-1 rounded">Streaming</span>
               </div>
@@ -714,10 +719,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      // View counter
-      let views = localStorage.getItem("playbarViews") || 0;
-      views++;
-      localStorage.setItem("playbarViews", views);
+      // View counter using in-memory storage for this demo
+      let views = 42; // Starting with a demo number
       document.getElementById("viewCounter").textContent = views;
       
       // Handle navigation highlighting
@@ -731,16 +734,18 @@
           const targetId = this.getAttribute('href');
           const targetSection = document.querySelector(targetId);
           
-          window.scrollTo({
-            top: targetSection.offsetTop - 80,
-            behavior: 'smooth'
-          });
+          if (targetSection) {
+            window.scrollTo({
+              top: targetSection.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
         });
       });
       
       // Active section highlighting on scroll
       window.addEventListener('scroll', () => {
-        let current = '';
+        let current = 'home';
         
         sections.forEach(section => {
           const sectionTop = section.offsetTop;
@@ -760,7 +765,6 @@
       });
       
       // Project card interactions
-      const projectCards = document.querySelectorAll('.project-card');
       const projectPlays = document.querySelectorAll('.project-play');
       
       projectPlays.forEach((playBtn, index) => {
@@ -775,11 +779,9 @@
       
       contactCards.forEach(card => {
         card.addEventListener('click', function() {
-          // Get contact type and info
           const contactType = this.querySelector('h3').textContent;
           const contactInfo = this.querySelector('p').textContent;
           
-          // Handle different contact methods
           if (contactType === 'Email') {
             window.location.href = `mailto:${contactInfo}`;
           } else if (contactType === 'GitHub') {
@@ -797,10 +799,9 @@
       logo.addEventListener('click', function() {
         clickCount++;
         if (clickCount >= 5) {
-          const newAccent = '#' + Math.floor(Math.random()*16777215).toString(16);
-          const newAccentHover = '#' + Math.floor(Math.random()*16777215).toString(16);
-          document.documentElement.style.setProperty('--accent', newAccent);
-          document.documentElement.style.setProperty('--accent-hover', newAccentHover);
+          const colors = ['#1DB954', '#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8'];
+          const randomColor = colors[Math.floor(Math.random() * colors.length)];
+          document.documentElement.style.setProperty('--accent', randomColor);
           clickCount = 0;
         }
       });
